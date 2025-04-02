@@ -1,9 +1,9 @@
 """
-Adapter for LlamaIndex agents.
+Adapter for Autogpt agents.
 
-This module provides an adapter that translates between the LlamaIndex agent framework
+This module provides an adapter that translates between the Autogpt agent framework
 and the unified pebble protocol.
-For more details please visit the page : https://docs.llamaindex.ai/en/stable/use_cases/agents/
+For more details please visit the page : https://github.com/Significant-Gravitas/AutoGPT/tree/master
 
 """
 import base64
@@ -24,7 +24,7 @@ from pebble.schemas.models import (
 )
 
 
-class LlamaIndexAdapter(AgentProtocol):
-    """Adapter for LlamaIndex agents."""
+class AutogptAdapter(AgentProtocol):
+    """Adapter for Autogpt agents."""
     
-    # TODO: Implement LlamaIndex adapter
+    # TODO: Implement Autogpt adapter

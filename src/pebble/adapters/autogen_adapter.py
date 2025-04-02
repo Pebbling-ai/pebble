@@ -1,9 +1,9 @@
 """
-Adapter for LlamaIndex agents.
+Adapter for Autogen agents.
 
-This module provides an adapter that translates between the LlamaIndex agent framework
+This module provides an adapter that translates between the Autogen agent framework
 and the unified pebble protocol.
-For more details please visit the page : https://docs.llamaindex.ai/en/stable/use_cases/agents/
+For more details please visit the page : https://github.com/microsoft/autogen
 
 """
 import base64
@@ -24,7 +24,7 @@ from pebble.schemas.models import (
 )
 
 
-class LlamaIndexAdapter(AgentProtocol):
-    """Adapter for LlamaIndex agents."""
+class AutogenAdapter(AgentProtocol):
+    """Adapter for Autogen agents."""
     
-    # TODO: Implement LlamaIndex adapter
+    # TODO: Implement Autogen adapter

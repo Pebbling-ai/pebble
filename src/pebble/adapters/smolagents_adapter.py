@@ -1,9 +1,9 @@
 """
-Adapter for LlamaIndex agents.
+Adapter for SmolAgents agents.
 
-This module provides an adapter that translates between the LlamaIndex agent framework
+This module provides an adapter that translates between the SmolAgents agent framework
 and the unified pebble protocol.
-For more details please visit the page : https://docs.llamaindex.ai/en/stable/use_cases/agents/
+For more details please visit the page : https://github.com/huggingface/smolagents/tree/main/src/smolagents
 
 """
 import base64
@@ -24,7 +24,7 @@ from pebble.schemas.models import (
 )
 
 
-class LlamaIndexAdapter(AgentProtocol):
-    """Adapter for LlamaIndex agents."""
+class SmolAgentsAdapter(AgentProtocol):
+    """Adapter for SmolAgents agents."""
     
-    # TODO: Implement LlamaIndex adapter
+    # TODO: Implement SmolAgents adapter
