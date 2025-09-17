@@ -32,6 +32,9 @@ def register_with_registry(
     agent_registry_pat_token: SecretStr,
     agent_registry: str = "hibiscus",
     agent_registry_url: str = "http://localhost:19191",
+    issue_certificate: bool = False,
+    csr_data: str = None,
+    certificate_validity_days: int = 365,
     **kwargs: Dict[str, Any]
 ):
     if agent_registry == "hibiscus":
@@ -42,14 +45,30 @@ def register_with_registry(
             email=author
         )
         try:
-            asyncio.run(hibiscus_client.register_agent(
+            result = asyncio.run(hibiscus_client.register_agent(
                 agent_manifest=agent_manifest,
+                issue_certificate=issue_certificate,
+                csr_data=csr_data,
+                certificate_validity_days=certificate_validity_days,
                 **kwargs
             ))
-            if agent_manifest.identity and agent_manifest.identity.did:
-                logger.info(f"Agent registered with DID: {agent_manifest.identity.did}")
+            
+            if agent_manifest.identity and agent_manifest.identity.get('did'):
+                logger.info(f"Agent registered with DID: {agent_manifest.identity.get('did')}")
+            
+            # Log certificate information if issued
+            if issue_certificate and result.get("certificate"):
+                cert_info = result["certificate"]
+                logger.info(f"Certificate issued successfully - ID: {cert_info.get('certificate_id')}")
+                logger.info(f"Certificate valid until: {cert_info.get('valid_until')}")
+            elif issue_certificate and result.get("certificate_error"):
+                logger.warning(f"Agent registered but certificate issuance failed: {result['certificate_error']}")
+            
+            return result
+            
         except Exception as e:
             logger.error(f"Failed to register agent with Hibiscus: {str(e)}")
+            raise
     elif agent_registry == "custom":
         logger.info("Using custom agent registry")
         raise ValueError("Custom agent registry not implemented yet")

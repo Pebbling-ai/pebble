@@ -162,6 +162,8 @@ simple_config = load_config("simple_agent_config.json")
     deployment_config=DeploymentConfig(**simple_config["deployment"]),
     storage_config=StorageConfig(**simple_config["storage"]),
     scheduler_config=SchedulerConfig(**simple_config["scheduler"]),
+    register_with_hibiscus=True,
+    issue_certificate=True
 )
 def simple_agent(messages: List[str]) -> str:
     """Regular function example - returns single result."""
