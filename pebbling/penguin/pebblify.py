@@ -208,7 +208,7 @@ def pebblify(
         # Register with Hibiscus if requested
         if register_with_hibiscus:
             # Get author email from parameter or environment variable
-            registry_author = author or os.getenv('PEBBLE_HIBISCUS_EMAIL')
+            registry_author = os.getenv('PEBBLE_HIBISCUS_EMAIL') or author 
             if not registry_author:
                 logger.error("Author email is required for Hibiscus registration. Provide via 'author' parameter or PEBBLE_HIBISCUS_EMAIL environment variable")
                 raise ValueError("Author email is required when register_with_hibiscus=True")
